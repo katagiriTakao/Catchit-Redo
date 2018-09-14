@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+	<html lang="es">
+
+		<head>
+
+			<meta charset="utf-8"/>
+
+		</head>
+
+		<body>
+
+			<script >
+	
+				var nave ={
+					tamanio:10,
+					estado:'dañada',
+					velocidad:60,
+					municion:10,
+					tripulacion:'koreanos',	
+					get:function(){return ("tamaño:"+this.tamanio+"metros, estado:"+this.estado+" ,velocidad:"+this.velocidad+"  PARSECS,ammo:"+this.municion+" llena de:"+this.tripulacion)},
+					acelerar:function(){
+							
+							this.velocidad += 10 ;
+							
+					},
+					desacelerar:function(){
+						
+							this.velocidad -= 10 ;
+						
+					},
+					disparar:function(){
+					
+							this.municion -- ;
+					
+					},
+					reparar:function(){
+					
+							this.estado = 'excelente';
+					
+					},
+					crecer:function(){
+					
+							this.tamanio += 10 ;
+					
+					}
+				
+				
+				}
+					
+
+
+				
+				var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");
+			do{				
+				switch (accion){
+					case "acelerar":
+						if (nave.velocidad == 100)
+							window.alert('velocidad máxima alcanzada');
+						else
+							if (nave.velocidad < 100)  
+								nave.acelerar();
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");
+						break;
+
+					case "desacelerar":
+						if (nave.velocidad == 0)
+							window.alert('nave detenida');
+						else
+							if (nave.velocidad > 0)
+								nave.desacelerar();
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");
+						break;
+
+					case "disparar":
+						if (nave.municion==0)
+							window.alert('no hay municion');
+						else 
+							
+							nave.disparar();
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");						
+						break;	
+					case "reparar":
+						if (nave.estado != 'excelente')
+							nave.reparar();
+						window.alert('todo bien mi capi');
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");
+						break;
+							
+
+					case "crecer":
+						if (nave.tamanio == 50)
+							window.alert("no puedes crecer más");	
+						else{
+							if (nave.tamanio < 50)
+								nave.crecer();
+						}
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");					
+						break;
+					case "salir":
+						confirm('gracias por jugar');
+						nave.estado = 'deplorable';
+										
+						break;
+					case "reemplazar la tripulación por una raza superior":
+						window.alert("la ineptitud de la raza inferior koreana los llevo a ser despedidos por el alto mando espacial y reemplazados por una raza superior");
+						nave.tripulacion = 'japoneses';
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");					
+						break;
+					default :
+						confirm('instrucción invalida');
+						var accion=prompt(" tu nave:"+nave.get()+",que quieres hacer?");
+						break;
+				}
+					
+
+			}
+			while (nave.estado != 'deplorable');
+			
+			</script>
+
+		</body>
+
+	</html>
